@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ginkgo测试页</title>
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <h1>Ginkgo测试页</h1>
+  </div>
+  <div class="row">
+    <form action="" class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="msgIpt" class="col-sm-2 control-label">msg</label>
+        <div class="col-sm-10">
+          <input type="text" id="msgIpt" class="form-control" placeholder="请输入">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="tag" class="col-sm-2 control-label">tag</label>
+        <div class="col-sm-10">
+          <input type="text" id="tag" class="form-control" placeholder="请输入">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="session" class="col-sm-2 control-label">session</label>
+        <div class="col-sm-10">
+          <input type="text" id="session" class="form-control" placeholder="请输入">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="userid" class="col-sm-2 control-label">userid</label>
+        <div class="col-sm-10">
+          <input type="text" id="userid" class="form-control" placeholder="请输入">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button id="sendBtn" type="button" class="btn btn-default btn-info">发送消息</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<script src="../src/util.js"></script>
+
+<script>
+
+  // 192.168.1.68
+  // zest：1cfa96dcb99850a283d1b3fc76625bc0
+  // ca：c63e32584f54b896f44de6f48ec68349
+  // yvvy：0239834ca65ef179c82f42bb3e4416e2
+
+  $(function () {
+    var ginkgo = util.GetGinkgo({
+      brand: 'hickory',
+      key: '6bb2ab4656c52ad35599c64f4d6ab87d',
+//      addr: 'http://192.168.1.68/orange/src/api.php',
+      addr: 'http://192.168.1.68/orange/src/api.php',
+    });
+    $('#sendBtn').click(function () {
+      var data = $('#msgIpt').val();
+      var tag = $('#tag').val() || '';
+      var session = $('#session').val() || '';
+      var userid = $('#userid').val() || '';
+      ginkgo.send({
+        'tag': tag,
+        'session': session,
+        'userid': userid,
+        'data': data
+      });
+    });
+  });
+</script>
+</body>
+</html>

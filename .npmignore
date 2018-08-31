@@ -1,0 +1,10 @@
+.idea
+.DS_Store
+src
+node_modules
+npm-debug.log
+*.log
+gulpfile.js
+package-lock.json
+.babelrc
+
